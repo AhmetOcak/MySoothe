@@ -1,13 +1,10 @@
 package com.mysoothe.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val DarkColorPalette = darkColors(
     primary = White,
@@ -33,15 +30,10 @@ private val LightColorPalette = lightColors(
 
 @Composable
 fun MySootheTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    val colors: Colors
-    val systemUiController = rememberSystemUiController()
-
-    if (darkTheme) {
-        colors = DarkColorPalette
-        systemUiController.setStatusBarColor(color = Color.Transparent, darkIcons = false)
+    val colors = if (darkTheme) {
+        DarkColorPalette
     } else {
-        colors = LightColorPalette
-        systemUiController.setStatusBarColor(color = Color.Transparent, darkIcons = true)
+        LightColorPalette
     }
 
     MaterialTheme(

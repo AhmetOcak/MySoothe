@@ -1,8 +1,6 @@
 package com.mysoothe.navigation
 
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -25,7 +23,7 @@ import com.mysoothe.screens.LoginScreen
 import com.mysoothe.screens.WelcomeScreen
 
 @Composable
-fun NavGraph(startDestination: String = NavScreen.HomeScreen.route) {
+fun NavGraph(startDestination: String = NavScreen.WelcomeScreen.route) {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
@@ -41,6 +39,7 @@ fun NavGraph(startDestination: String = NavScreen.HomeScreen.route) {
                     showFab = true
 
                     BottomAppBar(
+                        modifier = Modifier.navigationBarsPadding(),
                         elevation = 8.dp,
                         backgroundColor = MaterialTheme.colors.background,
                     ) {
